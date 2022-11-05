@@ -3,9 +3,9 @@ spring:
     allow-bean-definition-overriding: true
     banner-mode: off
   application:
-    name: API-FMI
+    name: API-MARK
   datasource:
-    url: jdbc:postgresql://localhost:5432/fmi
+    url: jdbc:postgresql://localhost:5432/mark
     driveClassName: org.postgresql.Driver
     username: admin
     password: admin
@@ -19,8 +19,8 @@ spring:
     properties:
       hibernate:
         show_sql: true
-#        hbm2ddl:
-#          auto: create-drop
+        hbm2ddl:
+          auto: create-drop
 
 server:
   port: 8085
