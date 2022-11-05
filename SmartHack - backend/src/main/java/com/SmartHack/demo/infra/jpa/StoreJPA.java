@@ -3,10 +3,7 @@ package com.SmartHack.demo.infra.jpa;
 import lombok.*;
 import org.springframework.context.annotation.ComponentScan;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,9 +22,11 @@ public class StoreJPA extends BasicEntityJPA{
     @Column(name = "location")
     private String location;
 
-
     @OneToMany(mappedBy = "storeId")
     private Set<SocialMediaJPA> socialMedia = new HashSet<>();
+
+    @ManyToMany(mappedBy = "stores")
+    private Set<CampaignJPA> campaigns = new HashSet<>();
 
 
 }
