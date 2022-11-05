@@ -8,6 +8,6 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_MULTIPLE_DATABASES: <database_name>
+      POSTGRES_MULTIPLE_DATABASES: mark
     ports:
       - "5432:5432"
