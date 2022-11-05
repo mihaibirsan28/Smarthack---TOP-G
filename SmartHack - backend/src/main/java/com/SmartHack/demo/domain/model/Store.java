@@ -20,7 +20,6 @@ public class Store {
     private String id;
     private String name;
     private String location;
-    private Set<Coordinates> coordinates = new HashSet<>();
     private Set<SocialMedia> socialMedia = new HashSet<>();
 
 }

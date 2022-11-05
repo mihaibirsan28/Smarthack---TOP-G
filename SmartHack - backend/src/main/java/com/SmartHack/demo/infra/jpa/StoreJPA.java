@@ -25,8 +25,6 @@ public class StoreJPA extends BasicEntityJPA{
     @Column(name = "location")
     private String location;
 
-    @Column(name = "coordinates")
-    private String coordinates;
 
     @OneToMany(mappedBy = "storeId")
     private Set<SocialMediaJPA> socialMedia = new HashSet<>();
