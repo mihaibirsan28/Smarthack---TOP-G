@@ -19,8 +19,8 @@ spring:
     properties:
       hibernate:
         show_sql: true
-#        hbm2ddl:
-#          auto: create-drop
+        hbm2ddl:
+          auto: create-drop
 
 server:
   port: 8085
