@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="border">
+    <a routerLink="/campaigns/create">
+      <button class="btn btn-md btn-outline-primary">
+        <i class="fa fa-plus"></i>New Campaign</button>
+    </a>
+
+  </div>
+  <table mdbTable hover="true">
+    <thead>
+    <tr>
+      <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr mdbTableCol *ngFor="let campaign of campaigns">
+      <th scope="row">{{ campaign.id }}</th>
+      <td>{{ campaign.descritpion }}</td>
+      <td>{{ campaign.campaignGoal }}</td>
+      <td>{{ campaign.currentAmmount }}</td>
+      <td>
+        <button class="btn btn-sm btn-info" (click)="openDetails(contentDetails, campaign)">
+          <i class="fa fa-search"></i>Details</button>
+        <button class="btn btn-sm btn-warning" (click)="openEdit(contentEdit, campaign)">
+          <i class="fa fa-edit"></i>Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(campaign.id)">
+          <i class="fa fa-remove"></i>Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit campaign</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" #edf="ngForm" (ngSubmit)="onSubmitEdits()" novalidate>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <div class="input-group">
+          <textarea id="description" class="form-control" formControlName="description" > </textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="goal">Campaign goal</label>
+        <div class="input-group">
+          <input type="number" id="goal" class="form-control" formControlName="goal" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmitEdits()">Save changes</button>
+  </div>
+</ng-template>
+
+<ng-template #contentDetails let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-content-title">View campaign</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <h4>About the campaign</h4>
+      <p>{{this.selectedCampaign.descritpion}}</p>
+      <p>The goal of the campaign is to raise {{this.selectedCampaign.campaignGoal}} coins</p>
+    </div>
+
+    <app-progressbar [valueNow]="selectedCampaign.currentAmmount" [valueFinal]="this.selectedCampaign.campaignGoal"></app-progressbar>
+    <form [formGroup]="donationForm">
+      <div class="form-group">
+        <label for="donationAmount">Enter amount you want to donate</label>
+        <div class="input-group">
+          <input type="number" id="donationAmount" class="form-control" formControlName="amountToDonate" >
+          <button type="button" class="btn btn-success" (click)="onSubmitDonation()">Donate</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss()">Cancel</button>
+  </div>
+</ng-template>
