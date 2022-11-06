@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {CampaignService} from "../services/CampaignService";
 import {Campaign} from "../model/campaign";
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-campaigns',
@@ -15,12 +15,12 @@ export class CampaignsComponent implements OnInit {
   campaigns!: Campaign[];
   selectedCampaign!:Campaign;
   headElements = ['Id', 'Description', 'Goal', 'Current amount', 'Action'];
-  editForm = new FormGroup({
-    'description': new FormControl(),
-    'goal': new FormControl()
+  editForm = new UntypedFormGroup({
+    'description': new UntypedFormControl(),
+    'goal': new UntypedFormControl()
   })
-  donationForm = new FormGroup({
-    'amountToDonate': new FormControl()
+  donationForm = new UntypedFormGroup({
+    'amountToDonate': new UntypedFormControl()
   });
   constructor(private campaignService:CampaignService, private modalService:NgbModal) {
   }
