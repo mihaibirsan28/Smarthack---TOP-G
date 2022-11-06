@@ -6,7 +6,7 @@ export function initializeKeycloak(
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8080' + '/auth',
+        url: 'http://localhost:8080/auth',
         realm: 'SpringBootKeycloak',
         clientId: 'login-app',
       }

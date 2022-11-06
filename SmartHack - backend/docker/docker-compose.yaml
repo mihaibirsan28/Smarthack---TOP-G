@@ -22,8 +22,8 @@ services:
       DB_PASSWORD: admin
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_IMPORT=/keycloak/realm-export.json
-      KC_IMPORT=/keycloak/realm-export.json
+      KEYCLOAK_IMPORT: /keycloak/realm-export.json
+      KC_IMPORT: /keycloak/realm-export.json
     ports:
       - 8080:8080
     depends_on:

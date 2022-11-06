@@ -43,7 +43,7 @@ const keycloakService = new KeycloakService();
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    KeycloakAngularModule,
+    //KeycloakAngularModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -58,12 +58,12 @@ const keycloakService = new KeycloakService();
     CarouselModule.forRoot()
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    }
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initializeKeycloak,
+    //   multi: true,
+    //   deps: [KeycloakService],
+    // }
   ],
   bootstrap: [AppComponent]
 })

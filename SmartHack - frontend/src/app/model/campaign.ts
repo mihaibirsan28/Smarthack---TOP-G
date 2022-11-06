@@ -1,27 +1,36 @@
 import {User} from "./users";
 
 export class Campaign {
-  id!: string;
-  descritpion!: string;
-  campaignGoal!: number;
-  currentAmmount: number = 0;
-  requester!: User;
-  /*
-  constructor(
-    id: string,
-    description: string,
-    campaignGoal: number,
-    currentAmount: number,
-    requester: User
+    id!:string;
+    name:string;
+  releaseDate:Date;
+  postsSocial!:PostSocial[];
+}
+export class PostSocial{
 
-  ) {
-    this.id = id;
-    this.descritpion = description;
-    this.campaignGoal = campaignGoal;
-    this.currentAmmount = currentAmount;
-    this.requester = requester;
-  }
-  */
+  link!:string;
+  initialClientsNumber!:number;
+  socialMedia:SocialMediaEnum;
+}
 
+export class SocialMediaEnum{
+
+  value!:string;
+  link!:string;
+  nameDisplay!:string;
+
+}
+
+export class SocialMedia{
+  id!:string;
+  link!:string;
+  name!:SocialMediaEnum;
+}
+
+export class Store{
+   id!:string;
+   name!:string;
+   location!:string;
+  socialMedia!:SocialMedia[];
 
 }
