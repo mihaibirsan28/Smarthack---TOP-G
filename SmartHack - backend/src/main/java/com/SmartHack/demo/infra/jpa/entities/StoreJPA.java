@@ -1,7 +1,6 @@
-package com.SmartHack.demo.infra.jpa;
+package com.SmartHack.demo.infra.jpa.entities;
 
 import lombok.*;
-import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import java.util.Set;
 @Setter
 @Entity(name = "Store")
 @Table(name = "store")
-public class StoreJPA extends BasicEntityJPA{
+public class StoreJPA extends BasicEntityJPA {
 
     @Column(name  = "name")
     private String name;

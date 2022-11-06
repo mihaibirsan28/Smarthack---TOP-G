@@ -1,10 +1,9 @@
-package com.SmartHack.demo.infra.jpa.mapper;
+package com.SmartHack.demo.infra.jpa.entities.mappers;
 
 import com.SmartHack.demo.domain.model.Store;
-import com.SmartHack.demo.infra.jpa.StoreJPA;
+import com.SmartHack.demo.infra.jpa.entities.StoreJPA;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 
 @Mapper(
@@ -13,7 +12,7 @@ import org.mapstruct.Mapping;
                 SocialMediaJPAMapper.class
         }
 )
-public interface StoreJPAMapper extends GenericMapper<Store, StoreJPA> {
+public interface StoresJPAMapper extends GenericMapper<Store, StoreJPA> {
 
 
 }

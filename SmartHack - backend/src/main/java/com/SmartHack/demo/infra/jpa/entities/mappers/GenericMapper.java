@@ -1,4 +1,4 @@
-package com.SmartHack.demo.infra.jpa.mapper;
+package com.SmartHack.demo.infra.jpa.entities.mappers;
 
 public interface GenericMapper<Domain,DTO> {
 

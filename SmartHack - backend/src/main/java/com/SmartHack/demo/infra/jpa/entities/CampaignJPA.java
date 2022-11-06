@@ -1,7 +1,6 @@
-package com.SmartHack.demo.infra.jpa;
+package com.SmartHack.demo.infra.jpa.entities;
 
 
-import com.SmartHack.demo.domain.model.enums.SocialMediaEnum;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ import java.util.Set;
 @Setter
 @Entity(name = "Campaign")
 @Table(name = "campaign")
-public class CampaignJPA extends BasicEntityJPA{
+public class CampaignJPA extends BasicEntityJPA {
 
     @Column(name = "name")
     private String name;
