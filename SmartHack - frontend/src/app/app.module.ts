@@ -67,7 +67,8 @@ const keycloakService = new KeycloakService();
     MatDatepickerModule,
     MatMenuModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    CarouselModule.forRoot()
   ],
   providers: [
     // {

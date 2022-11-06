@@ -1,18 +1,91 @@
-<div class="d-grid" style="background-color:black">
-  <div class="col-lg-3">
-      <mat-form-field appearance="fill" [formControl]="selected">
-        <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option value="fashion">fashion</mat-option>
-      <mat-option value="beauty" >beauty </mat-option>
-      <mat-option value="electronics">electronics</mat-option>
-    </mat-select>
-    </mat-form-field>
+<div class="container">
+  <div class="border">
+    <a routerLink="/campaigns/create">
+      <button class="btn btn-md btn-outline-primary">
+        <i class="fa fa-plus"></i>New Campaign</button>
+    </a>
 
-    </div>
-  <div class="col-lg-3">
-
-    <button mat-button color="primary" (click)="getAds()">Primary</button>
   </div>
+  <table mdbTable hover="true">
+    <thead>
+    <tr>
+      <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr mdbTableCol *ngFor="let campaign of campaigns">
+      <th scope="row" value="row.number"></th>
+      <td>{{ campaign.name }}</td>
+      <td>{{ campaign.releaseDate }}</td>
+      <td>
+        <button class="btn btn-sm btn-info" (click)="openDetails(contentDetails, campaign)">
+          <i class="fa fa-search"></i>Details</button>
+        <button class="btn btn-sm btn-warning" (click)="openEdit(contentEdit, campaign)">
+          <i class="fa fa-edit"></i>Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(campaign.id)">
+          <i class="fa fa-remove"></i>Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
+<ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit campaign</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" #edf="ngForm" (ngSubmit)="onSubmitEdits()" novalidate>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <div class="input-group">
+          <textarea id="description" class="form-control" formControlName="description" > </textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="goal">Campaign goal</label>
+        <div class="input-group">
+          <input type="number" id="goal" class="form-control" formControlName="goal" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmitEdits()">Save changes</button>
+  </div>
+</ng-template>
+
+<ng-template #contentDetails let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-content-title">View campaign</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <h4>About the campaign</h4>
+      <tr mdbTableCol *ngFor="let posts of selectedCampaign.postsSocial">
+        <td>{{posts.link}}</td>
+        <td>{{posts.socialMedia.value}}</td>
+      </tr>
+      <p>The goal of the campaign is to raise {{this.selectedCampaign.campaignGoal}} coins</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss()">Cancel</button>
+  </div>
+</ng-template>
+
+<share-buttons theme="circles-dark"
+    [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+    [showIcon]="true"
+    [showText]="false"
+    url="https://rodrigo.kamada.com.br/"
+    description="Angular Share Buttons"
+    twitterAccount="rodrigokamada"
+    class="pt-5">
+</share-buttons>
