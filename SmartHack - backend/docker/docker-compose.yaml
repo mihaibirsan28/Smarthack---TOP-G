@@ -8,6 +8,23 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_MULTIPLE_DATABASES: mark
+      POSTGRES_MULTIPLE_DATABASES: mark,keycloak
     ports:
       - "5432:5432"
+  keycloak:
+    image: quay.io/keycloak/keycloak:legacy
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: admin
+      DB_SCHEMA: public
+      DB_PASSWORD: admin
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /keycloak/realm-export.json
+      KC_IMPORT: /keycloak/realm-export.json
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres

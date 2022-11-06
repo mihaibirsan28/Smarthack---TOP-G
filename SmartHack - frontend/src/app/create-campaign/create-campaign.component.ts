@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgForm} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, NgForm} from "@angular/forms";
 import {CampaignService} from "../services/CampaignService";
 import {User} from "../model/users";
 import {Campaign} from "../model/campaign";
@@ -15,9 +15,9 @@ export class CreateCampaignComponent implements OnInit {
   dummyRequester = new User('', 'email@email.com', 'Dummy', new Date());
   dummyCampaign: Campaign = new Campaign();
 
-  form = new FormGroup({
-    'description': new FormControl(),
-    'goal': new FormControl()
+  form = new UntypedFormGroup({
+    'description': new UntypedFormControl(),
+    'goal': new UntypedFormControl()
   })
   constructor(private campaignService: CampaignService, private router: Router) { }
 

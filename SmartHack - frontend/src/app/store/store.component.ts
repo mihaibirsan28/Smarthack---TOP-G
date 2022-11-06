@@ -7,10 +7,10 @@ import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-campaigns',
-  templateUrl: './campaigns.component.html',
-  styleUrls: ['./campaigns.component.css']
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
-export class CampaignsComponent implements OnInit {
+export class StoreComponent implements OnInit {
 
   campaigns!: Campaign[];
   selectedCampaign!:Campaign;

@@ -22,6 +22,21 @@ spring:
         hbm2ddl:
           auto: create-drop
 
+is:
+  keycloak:
+    admin:
+      user: admin
+      password: admin
+# Keycloak settings
+keycloak:
+  realm: SpringBootKeycloak
+  auth-server-url: http://localhost:8080/auth/
+  ssl-required: none
+  resource: is-keycloak
+  use-resource-role-mappings: true
+  bearer-only: true
+  cors: true
+  principal-attribute: preferred_username
 server:
   port: 8085
 

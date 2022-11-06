@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';   // use this
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +21,12 @@ import { UsersComponent } from './users/users.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CarouselModule} from "ngx-bootstrap/carousel";
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import {initializeKeycloak} from "./init/keycloak-init.factory";
 // @ts-ignore
+
+const keycloakService = new KeycloakService();
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +43,7 @@ import {CarouselModule} from "ngx-bootstrap/carousel";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    //KeycloakAngularModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -51,8 +58,14 @@ import {CarouselModule} from "ngx-bootstrap/carousel";
     CarouselModule.forRoot()
   ],
   providers: [
-
-    ],
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initializeKeycloak,
+    //   multi: true,
+    //   deps: [KeycloakService],
+    // }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
