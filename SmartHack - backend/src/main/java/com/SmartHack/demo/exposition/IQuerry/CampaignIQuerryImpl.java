@@ -21,7 +21,7 @@ import java.util.Optional;
 public class CampaignIQuerryImpl implements IQuerry<Campaign> {
 
 
-    private  CampaignsRepository campaignsRepository;
+    private final CampaignsRepository campaignsRepository;
 
     @Override
     public Campaign getById(String id){

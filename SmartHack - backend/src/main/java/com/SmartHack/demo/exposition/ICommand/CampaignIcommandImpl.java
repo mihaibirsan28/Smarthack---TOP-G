@@ -20,7 +20,7 @@ import javax.transaction.Transactional;
 public class CampaignIcommandImpl implements ICommand<Campaign> {
 
 
-    private CampaignsRepository campaignsRepository;
+    private final CampaignsRepository campaignsRepository;
     @Override
     public String save(Campaign body) {
         fieldVerification(body);
@@ -52,7 +52,7 @@ public class CampaignIcommandImpl implements ICommand<Campaign> {
     public void fieldVerification(Campaign body) {
 
         if(!StringUtils.hasText(body.getName()) ||
-                !ObjectUtils.isEmpty(body.getReleaseDate())) {
+                ObjectUtils.isEmpty(body.getReleaseDate())) {
             throw new CustomErrorHandler(ExceptionEnum.EMPTY_FIELD);
         }
     }

@@ -48,7 +48,7 @@ public class CampaignsResource {
                 .body(campaignIQuerry.getById(objectId));
     }
 
-    @GetMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCampaign(@PathVariable("id") String id) {
         campaignICommand.delete(id);
         return ResponseEntity.ok().build();

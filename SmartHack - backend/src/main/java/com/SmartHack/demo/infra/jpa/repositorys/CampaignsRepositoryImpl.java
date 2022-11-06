@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 public class CampaignsRepositoryImpl implements CampaignsRepository {
 
-    private CampaignsJPARepository campaignsJPARepository;
-    private CampaignJPAMapper campaignsJPAMapper;
+    private final CampaignsJPARepository campaignsJPARepository;
+    private final CampaignJPAMapper campaignsJPAMapper;
 
     @Override
     public String save(Campaign campaign) {

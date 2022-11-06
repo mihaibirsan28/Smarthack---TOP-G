@@ -48,7 +48,7 @@ public class StoreICommandImpl implements ICommand<Store> {
     public void fieldVerification(Store body) {
 
         if(!StringUtils.hasText(body.getName())
-            || !StringUtils.hasText(body.getLocation())) {
+                || !StringUtils.hasText(body.getLocation())) {
             throw new CustomErrorHandler(ExceptionEnum.EMPTY_FIELD);
         }
     }
