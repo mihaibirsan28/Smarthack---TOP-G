@@ -14,6 +14,7 @@ import java.util.Set;
 @Setter
 public class Campaign  {
 
+    private String id;
     private String name;
     private LocalDate releaseDate;
     private Set<PostSocial> postsSocial = new HashSet<>();

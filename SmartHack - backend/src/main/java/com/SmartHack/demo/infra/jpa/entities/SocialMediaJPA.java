@@ -1,4 +1,4 @@
-package com.SmartHack.demo.infra.jpa;
+package com.SmartHack.demo.infra.jpa.entities;
 
 import com.SmartHack.demo.domain.model.enums.SocialMediaEnum;
 import lombok.*;

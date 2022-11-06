@@ -1,7 +1,7 @@
-package com.SmartHack.demo.infra.jpa.mapper;
+package com.SmartHack.demo.infra.jpa.entities.mappers;
 
 import com.SmartHack.demo.domain.model.PostSocial;
-import com.SmartHack.demo.infra.jpa.PostSocialJPA;
+import com.SmartHack.demo.infra.jpa.entities.PostSocialJPA;
 import org.mapstruct.Mapper;
 
 @Mapper(

@@ -1,4 +1,4 @@
-package com.SmartHack.demo.infra.jpa;
+package com.SmartHack.demo.infra.jpa.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 

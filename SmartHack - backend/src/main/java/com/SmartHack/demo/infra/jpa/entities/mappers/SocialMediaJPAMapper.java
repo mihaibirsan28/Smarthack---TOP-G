@@ -1,7 +1,7 @@
-package com.SmartHack.demo.infra.jpa.mapper;
+package com.SmartHack.demo.infra.jpa.entities.mappers;
 
 import com.SmartHack.demo.domain.model.SocialMedia;
-import com.SmartHack.demo.infra.jpa.SocialMediaJPA;
+import com.SmartHack.demo.infra.jpa.entities.SocialMediaJPA;
 import org.mapstruct.Mapper;
 
 @Mapper(

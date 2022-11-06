@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {UntypedFormControl, UntypedFormGroup, NgForm} from "@angular/forms";
 import {CampaignService} from "../services/CampaignService";
 import {User} from "../model/users";
-import {Campaign} from "../model/campaign";
+import {Campaign, PostSocial} from "../model/campaign";
 import {Router} from "@angular/router"
+import {ActivatedRoute} from "@angular/router";
+
 
 
 @Component({
@@ -12,26 +14,30 @@ import {Router} from "@angular/router"
   styleUrls: ['./create-campaign.component.css']
 })
 export class CreateCampaignComponent implements OnInit {
-  dummyRequester = new User('', 'email@email.com', 'Dummy', new Date());
-  dummyCampaign: Campaign = new Campaign();
 
-  form = new UntypedFormGroup({
-    'description': new UntypedFormControl(),
-    'goal': new UntypedFormControl()
-  })
-  constructor(private campaignService: CampaignService, private router: Router) { }
+  campaign!:Campaign;
+  auxiliarPostSocial!:PostSocial[];
+
+
+  constructor(private campaignService: CampaignService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
-  onSubmit() {
-    this.dummyCampaign.descritpion = this.form.value.description;
-    this.dummyCampaign.campaignGoal = this.form.value.goal;
-    console.log(this.campaignService.createCampaign(this.dummyCampaign).subscribe(data => {
-      console.log(data);
-      this.dummyCampaign = data;
-    }))
-    console.log(this.dummyCampaign);
-    this.router.navigate(['campaigns'])
+    this.route.params.subscribe(params=>{
+      if(params?.['id']!=null){
+        this.campaignService.getCampaignById(params?.['id']).subscribe(value => {
+          this.campaign=value;
+        });
+      }
+      else{
+        this.campaign=new Campaign();
+        this.auxiliarPostSocial=[];
+      }
+    })
 
   }
+
+  addSocialPost(){
+    this.auxiliarPostSocial.push(new PostSocial());
+  }
+
 }

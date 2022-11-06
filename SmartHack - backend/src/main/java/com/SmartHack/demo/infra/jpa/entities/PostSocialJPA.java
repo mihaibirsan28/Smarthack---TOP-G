@@ -1,12 +1,12 @@
-package com.SmartHack.demo.infra.jpa;
+package com.SmartHack.demo.infra.jpa.entities;
 
 
 import com.SmartHack.demo.domain.model.enums.SocialMediaEnum;
+import com.SmartHack.demo.infra.jpa.entities.BasicEntityJPA;
+import com.SmartHack.demo.infra.jpa.entities.CampaignJPA;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @Entity(name = "PostSocial")
 @Table(name = "post_social")
-public class PostSocialJPA extends BasicEntityJPA{
+public class PostSocialJPA extends BasicEntityJPA {
 
     @Column(name = "social_media")
     @Enumerated(EnumType.STRING)
