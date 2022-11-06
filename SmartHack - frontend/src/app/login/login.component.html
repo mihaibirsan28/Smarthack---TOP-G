@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <div class="d-grid">
+      <div class="container col-sm-12 col-md-6 col-lg-4">
+        <label >Username</label>
+        <input  id="usert.id"   placeholder="Username">
+      </div>
+    </div>
+    <div class="d-grid">
+      <div class="container col-sm-12 col-md-6 col-lg-4">
+        <label >Password</label>
+        <input  id="user.id" placeholder="Password" type="password">
+      </div>
+    </div>
+
+    <div>
+      <button mat-button color = "basic">Login</button>
+    </div>
+
+    <div>
+      <a routerLink="/register"><button mat-button color = "basic">Register</button></a>
+    </div>
+  </mat-card>
+</div>

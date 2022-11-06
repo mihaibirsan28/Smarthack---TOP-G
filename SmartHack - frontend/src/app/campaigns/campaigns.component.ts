@@ -13,22 +13,16 @@ import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 export class CampaignsComponent implements OnInit {
 
   campaigns!: Campaign[];
+  selected:any;
+  dataValue:any;
   selectedCampaign!:Campaign;
-  headElements = ['Id', 'Description', 'Goal', 'Current amount', 'Action'];
-  editForm = new UntypedFormGroup({
-    'description': new UntypedFormControl(),
-    'goal': new UntypedFormControl()
-  })
-  donationForm = new UntypedFormGroup({
-    'amountToDonate': new UntypedFormControl()
-  });
+  headElements = ['Id', 'Name', 'Date', 'Social Media Platforms', 'Action'];
   constructor(private campaignService:CampaignService, private modalService:NgbModal) {
   }
 
 
   ngOnInit(): void {
     this.initData();
-
   }
 
   initData() {
@@ -38,56 +32,10 @@ export class CampaignsComponent implements OnInit {
     })
   }
 
-  onDelete(campaignId: string) {
-    this.campaignService.deleteCampaignById(campaignId).subscribe(data=>{
-      console.log(data);
-      this.initData();
-    }, error => {
-      console.log(error);
-    });
-    console.log(campaignId);
-    console.log("clicked");
-  }
-  openEdit(targetModal: any, campaign:Campaign) {
-    this.modalService.open(targetModal, {
-      backdrop: 'static',
-      size: 'lg'
-    });
-    this.editForm.patchValue( {
-      description: campaign.descritpion,
-      goal: campaign.campaignGoal
-    });
-    this.selectedCampaign = campaign;
-  }
-  onSubmitEdits() {
-    this.selectedCampaign.descritpion=this.editForm.value.description;
-    this.selectedCampaign.campaignGoal=this.editForm.value.goal;
-    console.log(this.selectedCampaign);
-    this.campaignService.updateCampaign(this.selectedCampaign, this.selectedCampaign.id).subscribe(data => {
-      console.log(data);
-      this.initData();
-    }, error => {
-      console.log(error);
-    });
-    this.modalService.dismissAll();
+  getAds(){
+    this.campaignService.getAdsByName("fashion").subscribe(data=>{
+      this.dataValue=data;
+    })
   }
 
-  onSubmitDonation() {
-    this.selectedCampaign.currentAmmount += this.donationForm.value.amountToDonate;
-    this.campaignService.updateCampaign(this.selectedCampaign, this.selectedCampaign.id).subscribe(data => {
-      console.log(data);
-      this.initData();
-    }, error => {
-      console.log(error);
-    });
-    this.modalService.dismissAll();
-  }
-
-  openDetails(targetModal: any, campaign: Campaign) {
-    this.modalService.open(targetModal, {
-      backdrop: 'static',
-      size: 'lg'
-    });
-    this.selectedCampaign = campaign;
-  }
 }

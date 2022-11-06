@@ -10,7 +10,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'campaigns', component: CampaignsComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'campaigns/create/:id', component: CreateCampaignComponent},
   {path: 'campaigns/create', component: CreateCampaignComponent},
+
 ];
 
 @NgModule({

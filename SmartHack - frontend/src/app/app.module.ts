@@ -23,6 +23,12 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CarouselModule} from "ngx-bootstrap/carousel";
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import {initializeKeycloak} from "./init/keycloak-init.factory";
+import {MatCardModule} from "@angular/material/card";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 // @ts-ignore
 
 const keycloakService = new KeycloakService();
@@ -39,6 +45,7 @@ const keycloakService = new KeycloakService();
     ProgressbarComponent
   ],
   imports: [
+    MatNativeDateModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +62,12 @@ const keycloakService = new KeycloakService();
     MatFormFieldModule,
     ReactiveFormsModule,
     NgbModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    MatCardModule,
+    MatDatepickerModule,
+    MatMenuModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     // {

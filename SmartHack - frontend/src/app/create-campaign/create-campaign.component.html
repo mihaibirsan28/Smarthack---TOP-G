@@ -1,18 +1,44 @@
-<div class="container-md">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group">
-      <label for="description">Description of your campaign</label>
-      <br>
-      <textarea type="text" class="form-control"  formControlName="description" id="description" aria-describedby="campaignHelp" placeholder="description"></textarea>
-      <small id="campaignHelp" class="form-text text-muted">Your description will help you get noticed.</small>
+<div class="container">
+  <mat-card>
+    <mat-card-title *ngIf="campaign?.id!=null">{{campaign.name}}</mat-card-title>
+    <div class="d-grid">
+      <div class="container   col-sm-12 col-md-6 col-lg-4">
+      <label for="campaign.id"> Name</label>
+      <input  id="campaign.id" [ngModel]="campaign.name"  placeholder="Name">
     </div>
-    <div class="form-group">
-      <label for="campaignGoal">Your campaign's goal</label>
-      <br>
-      <input type="number" class="form-control" formControlName="goal" id="campaignGoal"  aria-describedby="goalHelp" ngModel placeholder="goal">
-      <small id="goalHelp" class="form-text text-muted">The amount you want to raise.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Create campaign</button>
-  </form>
-</div>
 
+    <div class="container col-sm-12 col-md-6 col-lg-4">
+      <label for="releaseDate">Realease Date</label>
+      <input id="releaseDate" [ngModel]="campaign.releaseDate" matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+    </div>
+
+      <div class="d-grid" *ngFor="let auxil of auxiliarPostSocial">
+      <div class="container col-sm-12 col-md-12 col-lg-12">
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Facebook</button>
+          <button mat-menu-item>Instagram</button>
+          <button mat-menu-item>Twitter</button>
+          <button mat-menu-item>Tik-Tok</button>
+        </mat-menu>
+      </div>
+
+    </div>
+    <div class="d-grid">
+      <div class="container col-sm-12 col-md-6 col-lg-4">
+        <button mat-mini-fab color="warn" aria-label="Add new Social Post" (click)="addSocialPost()" >
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <button mat-button color = "basic">Submit</button>
+    </div>
+
+  </mat-card>
+</div>
