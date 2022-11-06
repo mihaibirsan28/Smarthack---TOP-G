@@ -23,6 +23,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CarouselModule} from "ngx-bootstrap/carousel";
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import {initializeKeycloak} from "./init/keycloak-init.factory";
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 // @ts-ignore
 
 const keycloakService = new KeycloakService();
@@ -55,6 +57,8 @@ const keycloakService = new KeycloakService();
     MatFormFieldModule,
     ReactiveFormsModule,
     NgbModule,
+    ShareButtonsModule,
+    ShareIconsModule,
     CarouselModule.forRoot()
   ],
   providers: [
